@@ -453,8 +453,8 @@ public class TextUtils {
 			for(String s:local.keySet())
 			{
 				double score=local.get(s)*(local.get(s)/globalTermFreq.get(s)); //TF log IDF
-				FibonacciHeapNode<String> node = new FibonacciHeapNode<String>(s, -score);
-				heap.insert(node, node.getKey());
+				FibonacciHeapNode<String> node = new FibonacciHeapNode<String>(s);
+				heap.insert(node, -score);
 			}
 			HashMap<String, Double> tmp = new HashMap<String, Double>();
 			double sum=0;

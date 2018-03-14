@@ -20,8 +20,8 @@ public class SharedUtils {
 		FibonacciHeap<Integer> heap = new FibonacciHeap<Integer>();
 		for(int i=0;i<list.size();i++)
 		{
-			FibonacciHeapNode<Integer> node = new FibonacciHeapNode<Integer>(i, (Double) list.get(i));
-			heap.insert(node, node.getKey());
+			FibonacciHeapNode<Integer> node = new FibonacciHeapNode<Integer>(i);
+			heap.insert(node, (Double) list.get(i));
 		}
 		for(int i=0;i<list.size();i++)
 		{
@@ -80,8 +80,8 @@ public class SharedUtils {
 			{
 				if(Double.parseDouble(tokens[i])==1)
 					continue;
-				FibonacciHeapNode<String> node = new FibonacciHeapNode<String>(lc+"_"+i, Double.parseDouble(tokens[i]));
-				heap.insert(node, node.getKey());
+				FibonacciHeapNode<String> node = new FibonacciHeapNode<String>(lc+"_"+i);
+				heap.insert(node, Double.parseDouble(tokens[i]));
 			}
 			lc++;
 		}

@@ -113,7 +113,7 @@ class Graph {
 		/* The distance from the source to the source is defined to be zero */
 		dist[node] = 0;
 		for(int i=0;i<numNodes;i++){
-			FibonacciHeapNode<Integer> fhn = new FibonacciHeapNode<Integer>(i,dist[i]);
+			FibonacciHeapNode<Integer> fhn = new FibonacciHeapNode<Integer>(i);
 			fh.insert(fhn, dist[i]);
 			map.put(i, fhn);
 		}
@@ -210,9 +210,9 @@ class Graph {
 			//process further
 			for (int i = 0; i < numNodes; i++) {
 				int vi = rankMap.get(i);//sortedNodeIds[i];
-				HashMap<Integer,FibonacciHeapNode<Integer>> heapedNodeToFHN= new HashMap<Integer, FibonacciHeapNode<Integer>>();
+				HashMap<Integer,FibonacciHeapNode<Integer>> heapedNodeToFHN = new HashMap<Integer, FibonacciHeapNode<Integer>>();
 				FibonacciHeap<Integer> heap = new FibonacciHeap<Integer>();
-				FibonacciHeapNode<Integer> fhn = new FibonacciHeapNode<Integer>(vi,0.0);
+				FibonacciHeapNode<Integer> fhn = new FibonacciHeapNode<Integer>(vi);
 				heap.insert(fhn, 0.0);
 				heapedNodeToFHN.put(fhn.getData(),fhn);
 				while(!heap.isEmpty()){
@@ -242,8 +242,8 @@ class Graph {
 							else
 							{
 								if(D+weight < dist[vj]){
-									FibonacciHeapNode<Integer> tempFHN = new FibonacciHeapNode<Integer>(vj,D+weight);
-									heap.insert(tempFHN, tempFHN.getKey());
+									FibonacciHeapNode<Integer> tempFHN = new FibonacciHeapNode<Integer>(vj);
+									heap.insert(tempFHN, D+weight);
 									heapedNodeToFHN.put(tempFHN.getData(), tempFHN);
 								}
 							}
@@ -361,7 +361,7 @@ class Graph {
 		/* The distance from the source to the source is defined to be zero */
 		dist[node] = 0;
 		for(int i=0;i<numNodes;i++){
-			FibonacciHeapNode<Integer> fhn = new FibonacciHeapNode<Integer>(i,dist[i]);
+			FibonacciHeapNode<Integer> fhn = new FibonacciHeapNode<Integer>(i);
 			fh.insert(fhn, dist[i]);
 			map.put(i, fhn);
 		}

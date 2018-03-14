@@ -549,15 +549,15 @@ public class QBSQueryExecutorMultipleQueries {
 						{
 							FibonacciHeapNode<ArrayList<String>> fhn2 =heap.removeMin();
 							heapSet.remove(fhn2.getData());
-							FibonacciHeapNode<ArrayList<String>> fhn1=new FibonacciHeapNode<ArrayList<String>>(c, actualScore);
-							heap.insert(fhn1, fhn1.getKey());
+							FibonacciHeapNode<ArrayList<String>> fhn1=new FibonacciHeapNode<ArrayList<String>>(c);
+							heap.insert(fhn1, actualScore);
 							heapSet.add(fhn1.getData());
 						}
 					}
 					else
 					{
-						FibonacciHeapNode<ArrayList<String>> fhn = new FibonacciHeapNode<ArrayList<String>>(c, actualScore);
-						heap.insert(fhn, fhn.getKey());
+						FibonacciHeapNode<ArrayList<String>> fhn = new FibonacciHeapNode<ArrayList<String>>(c);
+						heap.insert(fhn, actualScore);
 						heapSet.add(fhn.getData());
 					}
 				}

@@ -124,8 +124,8 @@ public class RankingAfterMatching {
 			FibonacciHeap<String> heap = new FibonacciHeap<String>();
 			for(String m:matches.keySet())
 			{
-				FibonacciHeapNode<String> node = new FibonacciHeapNode<String>(m, -matches.get(m));
-				heap.insert(node, node.getKey());
+				FibonacciHeapNode<String> node = new FibonacciHeapNode<String>(m);
+				heap.insert(node, -matches.get(m));
 			}
 			//return topk
 	//		for(int i=0;i<topK&&!heap.isEmpty();i++)
@@ -154,8 +154,8 @@ public class RankingAfterMatching {
 					int v2=map.get(Integer.parseInt(s.split("#")[1]));
 					newStr+=v1+"#"+v2+"\t";
 				}
-				FibonacciHeapNode<String> node2 = new FibonacciHeapNode<String>(newStr, -node.getKey());
-				heap2.insert(node2, node2.getKey());
+				FibonacciHeapNode<String> node2 = new FibonacciHeapNode<String>(newStr);
+				heap2.insert(node2, -node.getKey());
 			}
 			for(int i=0;i<topK&&!heap2.isEmpty();i++)
 			{

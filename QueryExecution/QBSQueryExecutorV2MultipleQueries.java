@@ -618,15 +618,15 @@ public class QBSQueryExecutorV2MultipleQueries {
 						{
 							FibonacciHeapNode<ArrayList<String>> fhn2 =heap.removeMin();
 							heapSet.remove(fhn2.getData());
-							FibonacciHeapNode<ArrayList<String>> fhn1=new FibonacciHeapNode<ArrayList<String>>(c, actualScore);
-							heap.insert(fhn1, fhn1.getKey());
+							FibonacciHeapNode<ArrayList<String>> fhn1=new FibonacciHeapNode<ArrayList<String>>(c);
+							heap.insert(fhn1, actualScore);
 							heapSet.add(fhn1.getData());
 						}
 					}
 					else
 					{
-						FibonacciHeapNode<ArrayList<String>> fhn = new FibonacciHeapNode<ArrayList<String>>(c, actualScore);
-						heap.insert(fhn, fhn.getKey());
+						FibonacciHeapNode<ArrayList<String>> fhn = new FibonacciHeapNode<ArrayList<String>>(c);
+						heap.insert(fhn, actualScore);
 						heapSet.add(fhn.getData());
 					}
 				}
@@ -825,7 +825,8 @@ public class QBSQueryExecutorV2MultipleQueries {
 	}
 	
 	private static void loadGraphSignatures() throws Throwable {
-		graphSign=new int[totalNodes][totalOrderingSize];
+		System.err.println(totalNodes + " | " + totalOrderingSize);
+		graphSign = new int[totalNodes][totalOrderingSize];
 		BufferedReader in = new BufferedReader(new FileReader(new File(baseDir, topologyFile)));
 		String str="";
 		while((str=in.readLine())!=null)
@@ -833,8 +834,11 @@ public class QBSQueryExecutorV2MultipleQueries {
 			String tokens[]=str.split("\\s+");
 			int node=Integer.parseInt(tokens[0]);
 			String toks[]=tokens[1].split(";");
-			for(int t2=0;t2<toks.length;t2++)
-				graphSign[node-1][t2]=Integer.parseInt(toks[t2]);
+			for(int t2=0;t2<toks.length;t2++) {
+				System.err.println(t2 + " " + toks[t2]);
+				System.err.println(graphSign[node-1]);
+				graphSign[node-1][t2] = Integer.parseInt(toks[t2]);
+			}
 		}
 		in.close();
 	}
